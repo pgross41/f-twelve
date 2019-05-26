@@ -79,6 +79,3 @@ FTwelve.onHide(() => {
 })
 ```
 
-
-<link rel="stylesheet" href="https://raw.githubusercontent.com/cerner/f-twelve/master/dist/f-twelve.css"/>
-<script src="https://raw.githubusercontent.com/cerner/f-twelve/master/dist/f-twelve.umd.js"></script>
