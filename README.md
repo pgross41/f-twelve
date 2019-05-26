@@ -78,3 +78,8 @@ FTwelve.onHide(() => {
     alert("Hiding F-Twelve");
 })
 ```
+
+
+<script>
+ alert("script tag");
+ </script>
