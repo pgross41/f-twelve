@@ -80,6 +80,5 @@ FTwelve.onHide(() => {
 ```
 
 
-<script>
- alert("script tag");
- </script>
+<link rel="stylesheet" href="https://raw.githubusercontent.com/cerner/f-twelve/master/dist/f-twelve.css"/>
+<script src="https://raw.githubusercontent.com/cerner/f-twelve/master/dist/f-twelve.umd.js"></script>
