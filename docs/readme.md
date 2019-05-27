@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -12,7 +11,7 @@
     <link rel="stylesheet" href="./../dist/f-twelve.css"/>
 </head>
 
-<body>
+<body>kc
 
 <h1>F-Twelve Demo</h1>
 <p>Press and hold F+1+2 in that order to display F-Twelve console below.</p>
@@ -34,15 +33,6 @@
 <br/>
 <button onclick="FTwelve.onHide(function(){alert('Hiding')})">Alert on hide</button>
 <button onclick="FTwelve.onHide(function(){})">Do nothing on hide</button>
-
-<h2>Dummy Content</h2>
-<iframe src="https://pgross41.github.io/f-twelve"></iframe>
-
-<script>
-  window.onerror = function(message, source, lineNo, colNo, error) {
-    console.error("I am the old error handler:", message);
-  };
-</script>
 
 <!-- ####################################################### -->
 <!--                                                         -->
