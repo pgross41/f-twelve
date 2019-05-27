@@ -8,7 +8,7 @@
     <!-- Include the CSS file -->
     <!--                      -->
     <!-- #################### -->
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/cerner/f-twelve/master/dist/f-twelve.css"/>
+    <link rel="stylesheet" href="/f-twelve/dist/f-twelve.css"/>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
 <!-- Include the JS file... And that's it, F-Twelve is ready -->
 <!--                                                         -->
 <!-- ####################################################### -->
-<script src="https://raw.githubusercontent.com/cerner/f-twelve/master/dist/f-twelve.umd.js"></script>
+<script src="/f-twelve/dist/f-twelve.umd.js"></script>
 
 <script>
 
