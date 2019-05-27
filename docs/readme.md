@@ -8,12 +8,12 @@
     <!-- Include the CSS file -->
     <!--                      -->
     <!-- #################### -->
-    <link rel="stylesheet" href="./../dist/f-twelve.css"/>
+    <link rel="stylesheet" href="dist/f-twelve.css"/>
 </head>
 
-<body>kc
+<body>
 
-<h1>F-Twelve Demo</h1>
+<h1>Demo</h1>
 <p>Press and hold F+1+2 in that order to display F-Twelve console below.</p>
 
 <h2>API Demo</h2>
@@ -39,7 +39,7 @@
 <!-- Include the JS file... And that's it, F-Twelve is ready -->
 <!--                                                         -->
 <!-- ####################################################### -->
-<script src="./../dist/f-twelve.umd.js"></script>
+<script src="dist/f-twelve.umd.js"></script>
 
 <script>
 
