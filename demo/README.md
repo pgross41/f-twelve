@@ -1,139 +1,143 @@
 <html>
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>F-Twelve Demo</title>
-    <!-- #################### -->
-    <!--                      -->
-    <!-- Include the CSS file -->
-    <!--                      -->
-    <!-- #################### -->
-    <link rel="stylesheet" href="/f-twelve/dist/f-twelve.css"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>F-Twelve Demo</title>
+  <!-- #################### -->
+  <!--                      -->
+  <!-- Include the CSS file -->
+  <!--                      -->
+  <!-- #################### -->
+  <link rel="stylesheet" href="/f-twelve/dist/f-twelve.css" />
 </head>
 
 <body>
-
-<!-- ####################################################### -->
-<!--                                                         -->
-<!-- Include the JS file... And that's it, F-Twelve is ready -->
-<!--                                                         -->
-<!-- ####################################################### -->
-<script src="/f-twelve/dist/f-twelve.umd.js"></script>
-
-<h1>Demo</h1>
-<p>Press and hold F+1+2 in that order to display F-Twelve below. Click "Console" to expand. All console output including regular <code>console.log</code> calls will be displayed there. </p>
-
-<h2>API</h2>
-<p>Use JS to show and hide the tool (instead of the keyboard shortcut). The API is available on the global <code>FTwelve</code> object.</p>
-
-Show the tool 
-```
-FTwelve.show();
-```
-<button onclick="FTwelve.show()">Show</button>
-
-Hide the tool
-```
-FTwelve.hide();
-```
-<button onclick="FTwelve.hide()">Hide</button>
-
-Completely disable the tool including the keyboard shortcut and show method
-```
-FTwelve.disable();
-```
-<button onclick="FTwelve.disable()">Disable</button>
-
-Enable the tool, this will also display it unless show is false
-```
-FTwelve.enable(show = true);
-```
-<button onclick="FTwelve.enable()">Enable</button>
-<button onclick="FTwelve.enable(false)">Enable (Hidden)</button>
-
-Set a callback when showing the tool. Useful, for example, to use F-Twelve’s “debug hotkey” to enable additional “debug mode” features in the consuming application.
-```
-FTwelve.onShow(() => {
-    alert("Showing F-Twelve");
-});
-```
-<button onclick="FTwelve.onShow(function(){alert('Showing F-Twelve')})">Alert on show</button>
-<button onclick="FTwelve.onShow(function(){})">Do nothing on show</button>
-
-Set a callback when removing from the DOM. Similarly as onShow, this can be used to disable the consuming application’s “debug mode” via keyboard shortcut.
-```
-FTwelve.onHide(() => {
-    alert("Hiding F-Twelve");
-})
-```
-<button onclick="FTwelve.onHide(function(){alert('Hiding')})">Alert on hide</button>
-<button onclick="FTwelve.onHide(function(){})">Do nothing on hide</button>
-
-
-<script>
-
-  generateFakeContent();
-
-  // Use the console functions as usual and it will capture the output
-  console.log("log msg");
-  console.warn("warn msg");
-  console.error("error msg");
-  console.info("info msg");
-  console.log({ "one": "two" });
-  console.log("one", "two", 3);
-  console.warn("words followed by a small object followed by a large object", { "one": "two" }, {
-    "ticket": [{
-      "impact": "0",
-      "tenantId": "5ba2af2b0456dc5c3fdc9b02",
-      "summary": "123",
-      "description": "123",
-      "assignedGroupId": "5ba3ddddc40a384ad1bd45c8",
-      "containsPhi": true,
-      "firstName": "Portal",
-      "lastName": "Portal",
-      "userName": "4464007",
-      "email": "pgross41@gmail.com",
-      "phoneNumber": "(636) 466-3778",
-      "id": 1
-    }],
-    "configuration": [{
-      "id": "undefined",
-      "tenantId": "0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca",
-      "issueTypes": {
-        "default": "5ba3ddddc40a384ad1bd45c8",
-        "options": [{
-          "value": "5ba3ddddc40a384ad1bd45c7",
-          "text": "Hardware"
-        }, { "value": "5ba3ddddc40a384ad1bd45c8", "text": "Software" }, {
-          "value": "5ba3ddddc40a384ad1bd45c9",
-          "text": "Other"
-        }]
-      },
-      "phoneNumber": "(866) 227-8877",
-      "lookBackMinutes": 240,
-      "impact": {
-        "default": "0",
-        "options": [{ "value": "0", "text": "Minor/Localized" }, {
-          "value": "1",
-          "text": "Moderate/Limited"
-        }, { "value": "2", "text": "Significant/Large" }, { "value": "3", "text": "Extensive/Widespread" }]
-      }
-    }]
-  });
-  iAmBadCode;
-
-
-  function generateFakeContent() {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() {
-      if (xmlHttp.readyState === 4 && xmlHttp.status === 200) document.getElementById("content").innerHTML = xmlHttp.responseText;
-    };
-    xmlHttp.open("GET", "https://baconipsum.com/api/?type=meat-and-filler&paras=10&format=html", true);
-    xmlHttp.send();
-  }
-
-
-</script>
+  
+  <!-- ####################################################### -->
+  <!--                                                         -->
+  <!-- Include the JS file... And that's it, F-Twelve is ready -->
+  <!--                                                         -->
+  <!-- ####################################################### -->
+  <script src="/f-twelve/dist/f-twelve.umd.js"></script>
+  
+  <h1>Demo</h1>
+  <p>Press and hold F+1+2 in that order to display F-Twelve below. Click "Console" to expand. All console output including regular <code>console.log</code> calls will be displayed there. </p>
+  
+  <h2>API</h2>
+  <p>Use JS to show and hide the tool (instead of the keyboard shortcut). The API is available on the global <code>FTwelve</code> object.</p>
+  
+  <h3>Show</h3>
+  <p>Attach F-Twelve to the DOM and display a collapsed tab at the bottom of the screen.</p>
+  <pre>
+    <code>
+      FTwelve.show();
+    </code>
+  </pre>
+  <button onclick="FTwelve.show()">Show</button>
+  
+  <h3>Hide</h3>
+  <p>Remove F-Twelve from the DOM.</p>
+  <pre>
+    <code>
+      FTwelve.hide();
+    </code>
+  </pre>
+  <button onclick="FTwelve.hide()">Hide</button>
+  
+  <h3>Disable</h3>
+  <p>Completely detach and disable the tool including the keyboard shortcut and show method.</p>
+  <pre>
+    <code>
+      FTwelve.disable();
+    </code>
+  </pre>
+  <button onclick="FTwelve.disable()">Disable</button>
+  
+  <h3>Enable</h3>
+  <p>Enable the tool, this will also display it unless show is false.</p>
+  <pre>
+    <code>
+      FTwelve.enable(show = true);
+    </code>
+  </pre>
+  <button onclick="FTwelve.enable()">Enable</button>
+  <button onclick="FTwelve.enable(false)">Enable (Hidden)</button>
+  
+  <h3>On Show</h3>
+  <p>Set a callback when showing the tool. Useful, for example, to use F-Twelve’s "debug hotkey" to enable additional "debug mode" features in the consuming application.</p>
+  <pre>
+    <code>
+      FTwelve.onShow(() => {
+        alert("Showing F-Twelve");
+      });
+    </code>
+  </pre>
+  <button onclick="FTwelve.onShow(function(){alert('Showing F-Twelve')})">Alert on show</button>
+  <button onclick="FTwelve.onShow(function(){})">Do nothing on show</button>
+  
+  <h3>On Hide</h3>
+  <p>Set a callback when removing from the DOM. Similarly as onShow, this can be used to disable the consuming application’s "debug mode" via keyboard shortcut.</p>
+  <pre>
+    <code>
+      FTwelve.onHide(() => {
+        alert("Hiding F-Twelve");
+      });
+    </code>
+  </pre>
+  <button onclick="FTwelve.onHide(function(){alert('Hiding f-Twelve')})">Alert on hide</button>
+  <button onclick="FTwelve.onHide(function(){})">Do nothing on hide</button>
+  
+  <script>
+    
+    // Use the console functions as usual and it will capture the output
+    console.log("log msg");
+    console.warn("warn msg");
+    console.error("error msg");
+    console.info("info msg");
+    console.log({ "one": "two" });
+    console.log("one", "two", 3);
+    console.warn("words followed by a small object followed by a large object", { "one": "two" }, {
+      "ticket": [{
+        "impact": "0",
+        "tenantId": "5ba2af2b0456dc5c3fdc9b02",
+        "summary": "123",
+        "description": "123",
+        "assignedGroupId": "5ba3ddddc40a384ad1bd45c8",
+        "containsPhi": true,
+        "firstName": "Portal",
+        "lastName": "Portal",
+        "userName": "4464007",
+        "email": "pgross41@gmail.com",
+        "phoneNumber": "(636) 466-3778",
+        "id": 1
+      }],
+      "configuration": [{
+        "id": "undefined",
+        "tenantId": "0b8a0111-e8e6-4c26-a91c-5069cbc6b1ca",
+        "issueTypes": {
+          "default": "5ba3ddddc40a384ad1bd45c8",
+          "options": [{
+            "value": "5ba3ddddc40a384ad1bd45c7",
+            "text": "Hardware"
+          }, { "value": "5ba3ddddc40a384ad1bd45c8", "text": "Software" }, {
+            "value": "5ba3ddddc40a384ad1bd45c9",
+            "text": "Other"
+          }]
+        },
+        "phoneNumber": "(866) 227-8877",
+        "lookBackMinutes": 240,
+        "impact": {
+          "default": "0",
+          "options": [{ "value": "0", "text": "Minor/Localized" }, {
+            "value": "1",
+            "text": "Moderate/Limited"
+          }, { "value": "2", "text": "Significant/Large" }, { "value": "3", "text": "Extensive/Widespread" }]
+        }
+      }]
+    });
+    iAmBadCode;
+    
+  </script>
 </body>
 
 </html>
