@@ -23,7 +23,7 @@
 <div id="header_wrap" class="outer">
     <header class="inner">
         <a id="forkme_banner" href="https://github.com/cerner/f-twelve">View on GitHub</a>
-        <h1 id="project_title">f-twelve</h1>
+        <h1 id="project_title">F-Twelve</h1>
         <h2 id="project_tagline">Render client console output to the DOM for troubleshooting environments that do not have a dev console</h2>
     </header>
 </div>
@@ -31,7 +31,7 @@
     <section id="main_content" class="inner">
 
         <h1>Demo</h1>
-        <p>F-Twelve requires no configuration, just include the JS file and CSS file. Press and hold F+1+2 in that order to display the collapsed tab below. All console output including regular <code>console.log</code> calls will be displayed there. </p>
+        <p>F-Twelve requires no configuration, just include the JS file and CSS file. Press and hold <code>F</code>+<code>1</code>+<code>2</code> in that order to display the collapsed tab below. All console output including regular <code>console.log</code> calls will be displayed there. </p>
 
         <h2>API</h2>
         <p>Optionally control the tool using JS via the API. The API is available on the global <code>FTwelve</code> object.</p>
@@ -60,16 +60,16 @@
         <h3>On Show</h3>
         <p>Set a callback when showing the tool. Useful, for example, to use F-Twelve’s "debug hotkey" to enable additional "debug mode" features in the consuming application.</p>
         <pre><code>FTwelve.onShow(() => {
-        alert("Showing F-Twelve");
-        });</code></pre>
+alert("Showing F-Twelve");
+});</code></pre>
         <button onclick="FTwelve.onShow(function(){alert('Showing F-Twelve')})">Alert on show</button>
         <button onclick="FTwelve.onShow(function(){})">Do nothing on show</button>
 
         <h3>On Hide</h3>
         <p>Set a callback when removing from the DOM. Similarly as onShow, this can be used to disable the consuming application’s "debug mode" via keyboard shortcut.</p>
         <pre><code>FTwelve.onHide(() => {
-        alert("Hiding F-Twelve");
-        });</code></pre>
+alert("Hiding F-Twelve");
+});</code></pre>
         <button onclick="FTwelve.onHide(function(){alert('Hiding f-Twelve')})">Alert on hide</button>
         <button onclick="FTwelve.onHide(function(){})">Do nothing on hide</button>
 
