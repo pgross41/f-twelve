@@ -21,47 +21,47 @@
   <script src="/f-twelve/dist/f-twelve.umd.js"></script>
   
   <h1>Demo</h1>
-  <p>Press and hold F+1+2 in that order to display F-Twelve below. Click "Console" to expand. All console output including regular <code>console.log</code> calls will be displayed there. </p>
+  <p>F-Twelve requires no configuration, just include the JS file and CSS file. Press and hold F+1+2 in that order to display the collapsed tab below. All console output including regular <code>console.log</code> calls will be displayed there. </p>
   
   <h2>API</h2>
-  <p>Use JS to show and hide the tool (instead of the keyboard shortcut). The API is available on the global <code>FTwelve</code> object.</p>
+  <p>Optionally control the tool using JS via the API. The API is available on the global <code>FTwelve</code> object.</p>
   
   <h3>Show</h3>
   <p>Attach F-Twelve to the DOM and display a collapsed tab at the bottom of the screen.</p>
-  <button onclick="FTwelve.show()">Show</button>
   <pre><code>FTwelve.show();</code></pre>
+  <button onclick="FTwelve.show()">Show</button>
   
   <h3>Hide</h3>
   <p>Remove F-Twelve from the DOM.</p>
-  <button onclick="FTwelve.hide()">Hide</button>
   <pre><code>FTwelve.hide();</code></pre>
+  <button onclick="FTwelve.hide()">Hide</button>
   
   <h3>Disable</h3>
   <p>Completely detach and disable the tool including the keyboard shortcut and show method.</p>
-  <button onclick="FTwelve.disable()">Disable</button>
   <pre><code>FTwelve.disable();</code></pre>
+  <button onclick="FTwelve.disable()">Disable</button>
   
   <h3>Enable</h3>
   <p>Enable the tool, this will also display it unless show is false.</p>
+  <pre><code>FTwelve.enable(show = true);</code></pre>
   <button onclick="FTwelve.enable()">Enable</button>
   <button onclick="FTwelve.enable(false)">Enable (Hidden)</button>
-  <pre><code>FTwelve.enable(show = true);</code></pre>
   
   <h3>On Show</h3>
   <p>Set a callback when showing the tool. Useful, for example, to use F-Twelve’s "debug hotkey" to enable additional "debug mode" features in the consuming application.</p>
-  <button onclick="FTwelve.onShow(function(){alert('Showing F-Twelve')})">Alert on show</button>
-  <button onclick="FTwelve.onShow(function(){})">Do nothing on show</button>
   <pre><code>FTwelve.onShow(() => {
   alert("Showing F-Twelve");
 });</code></pre>
+  <button onclick="FTwelve.onShow(function(){alert('Showing F-Twelve')})">Alert on show</button>
+  <button onclick="FTwelve.onShow(function(){})">Do nothing on show</button>
   
   <h3>On Hide</h3>
   <p>Set a callback when removing from the DOM. Similarly as onShow, this can be used to disable the consuming application’s "debug mode" via keyboard shortcut.</p>
-  <button onclick="FTwelve.onHide(function(){alert('Hiding f-Twelve')})">Alert on hide</button>
-  <button onclick="FTwelve.onHide(function(){})">Do nothing on hide</button>
   <pre><code>FTwelve.onHide(() => {
   alert("Hiding F-Twelve");
 });</code></pre>
+  <button onclick="FTwelve.onHide(function(){alert('Hiding f-Twelve')})">Alert on hide</button>
+  <button onclick="FTwelve.onHide(function(){})">Do nothing on hide</button>
   
   <script>
     
