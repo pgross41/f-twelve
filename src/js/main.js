@@ -9,6 +9,6 @@ window.FTwelve = Object.freeze({
   disable: () => fTwelve.disable(),
   hide: () => fTwelve.detach(fTwelve),
   show: () => fTwelve.attach(fTwelve),
-  onHide: (callback) => (fTwelve.onDetach = callback),
-  onShow: (callback) => (fTwelve.onAttach = callback),
+  onHide: (callback) => fTwelve.onDetach(callback),
+  onShow: (callback) => fTwelve.onAttach(callback),
 });

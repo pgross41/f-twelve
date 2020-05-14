@@ -52,7 +52,7 @@ describe('FTwelve', function() {
     });
     it('should execute onAttach callback', function() {
       this.testVar = 'old';
-      this.fTwelve.onAttach = () => (this.testVar = 'new');
+      this.fTwelve.onAttach(() => (this.testVar = 'new'));
       this.fTwelve.attach();
       assert.strictEqual(this.testVar, 'new');
     });
@@ -69,7 +69,7 @@ describe('FTwelve', function() {
       this.testVar = 'old';
       this.fTwelve.attach();
       assert(this.fTwelveAttached(), this.setupError);
-      this.fTwelve.onDetach = () => (this.testVar = 'new');
+      this.fTwelve.onDetach(() => (this.testVar = 'new'));
       this.fTwelve.detach();
       assert.strictEqual(this.testVar, 'new');
     });
@@ -78,11 +78,11 @@ describe('FTwelve', function() {
   describe('#onKeyDown()', function() {
     it('should update keyDownStack', function() {
       this.dispatchKeyboardEvent('keydown', 'A');
-      assert.strictEqual(this.fTwelve.keyDownStack, 'A');
+      assert.strictEqual(this.fTwelve.getKeyDownStack(), 'A');
       this.dispatchKeyboardEvent('keydown', 'B');
-      assert.strictEqual(this.fTwelve.keyDownStack, 'AB');
+      assert.strictEqual(this.fTwelve.getKeyDownStack(), 'AB');
       this.dispatchKeyboardEvent('keydown', 'C');
-      assert.strictEqual(this.fTwelve.keyDownStack, 'ABC');
+      assert.strictEqual(this.fTwelve.getKeyDownStack(), 'ABC');
     });
     it('should recognize F12 and attach', function() {
       this.dispatchKeyboardEvent('keydown', 'F');
@@ -106,9 +106,9 @@ describe('FTwelve', function() {
   describe('#onKeyUp()', function() {
     it('should clear the keyDownStack', function() {
       this.dispatchKeyboardEvent('keydown', 'A');
-      assert.strictEqual(this.fTwelve.keyDownStack, 'A', this.setupError);
+      assert.strictEqual(this.fTwelve.getKeyDownStack(), 'A', this.setupError);
       this.dispatchKeyboardEvent('keyup', 'A');
-      assert.strictEqual(this.fTwelve.keyDownStack, '');
+      assert.strictEqual(this.fTwelve.getKeyDownStack(), '');
     });
   });
 
@@ -116,10 +116,10 @@ describe('FTwelve', function() {
     it('should enable the key listener', function() {
       this.fTwelve.disableKeyboardTrigger();
       this.dispatchKeyboardEvent('keydown', 'A');
-      assert.strictEqual(this.fTwelve.keyDownStack, '', this.setupError);
+      assert.strictEqual(this.fTwelve.getKeyDownStack(), '', this.setupError);
       this.fTwelve.enableKeyboardTrigger();
       this.dispatchKeyboardEvent('keydown', 'A');
-      assert.strictEqual(this.fTwelve.keyDownStack, 'A');
+      assert.strictEqual(this.fTwelve.getKeyDownStack(), 'A');
     });
   });
 
@@ -127,7 +127,7 @@ describe('FTwelve', function() {
     it('should disable the key listener', function() {
       this.fTwelve.disableKeyboardTrigger();
       this.dispatchKeyboardEvent('keydown', 'A');
-      assert.strictEqual(this.fTwelve.keyDownStack, '');
+      assert.strictEqual(this.fTwelve.getKeyDownStack(), '');
     });
   });
 });

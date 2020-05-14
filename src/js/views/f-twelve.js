@@ -5,110 +5,128 @@ import Console from './content/console/console';
 /**
  * F-Twelve entrypoint
  */
-class FTwelve {
-  constructor() {
-    this.el = document.createElement('div');
-    this.console = new Console();
-    this.onAttach = undefined;
-    this.onDetach = undefined;
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
-    this.enable(false);
-    this.render();
-  }
+export default function() {
+  const el = document.createElement('div');
+  const console = new Console();
 
-  render() {
-    this.el.id = 'f-twelve';
-    this.el.className = styles.fTwelve;
-    this.contentWrapper = document.createElement('div');
-    this.el.appendChild(new Tabs({
-      console: this.console,
-      setContent: this.setContent.bind(this)
+  let onAttach;
+  let onDetach;
+  let keyDownStack;
+  let contentWrapper;
+  let content;
+  let attached;
+  let active;
+
+  const render = () => {
+    el.id = 'f-twelve';
+    el.className = styles.fTwelve;
+    contentWrapper = document.createElement('div');
+    el.appendChild(new Tabs({
+      console,
+      setContent
     }).render());
-    this.el.appendChild(this.contentWrapper);
-    return this.el;
-  }
+    el.appendChild(contentWrapper);
+    return el;
+  };
 
-  setContent(el) {
-    if (this.content) {
-      this.contentWrapper.removeChild(this.content);
+  const setContent = (el) => {
+    if (content) {
+      contentWrapper.removeChild(content);
     }
-    if (!el.isSameNode(this.content)) {
-      this.contentWrapper.appendChild(el);
-      this.content = el;
+    if (!el.isSameNode(content)) {
+      contentWrapper.appendChild(el);
+      content = el;
     } else {
-      this.content = undefined;
+      content = undefined;
     }
-  }
+  };
 
-  enable(show = true) {
-    this.active = true;
+  const enable = (show = true) => {
+    active = true;
     if (show) {
-      this.attach();
+      attach();
     }
-    this.enableKeyboardTrigger();
-    this.console.overrideWindowConsole();
-    this.console.overrideWindowOnError();
-  }
+    enableKeyboardTrigger();
+    console.overrideWindowConsole();
+    console.overrideWindowOnError();
+  };
 
-  disable() {
-    this.active = false;
-    this.detach();
-    this.disableKeyboardTrigger();
-    this.console.restoreWindowConsole();
-    this.console.restoreWindowOnError();
-  }
+  const disable = () => {
+    active = false;
+    detach();
+    disableKeyboardTrigger();
+    console.restoreWindowConsole();
+    console.restoreWindowOnError();
+  };
 
-  attach() {
-    if (this.attached === true || this.active !== true) {
+  const attach = () => {
+    if (attached === true || active !== true) {
       return;
     }
     const body = document.getElementsByTagName('body')[0];
-    body.appendChild(this.el);
-    this.attached = true;
-    if (typeof this.onAttach === 'function') {
-      this.onAttach();
+    body.appendChild(el);
+    attached = true;
+    if (typeof onAttach === 'function') {
+      onAttach();
     }
-  }
+  };
 
-  detach() {
-    if (this.attached !== true) {
+  const detach = () => {
+    if (attached !== true) {
       return;
     }
-    const el = document.getElementById(this.el.id);
-    el.parentNode.removeChild(el);
-    this.attached = false;
-    if (typeof this.onDetach === 'function') {
-      this.onDetach();
+    const attachedEl = document.getElementById(el.id);
+    attachedEl.parentNode.removeChild(attachedEl);
+    attached = false;
+    if (typeof onDetach === 'function') {
+      onDetach();
     }
-  }
+  };
 
-  onKeyDown(event) {
-    this.keyDownStack += event.key;
-    if (event.key === 'F12' || this.keyDownStack.toUpperCase() !== 'F12') {
+  const onKeyDown = (event) => {
+    keyDownStack += event.key;
+    if (event.key === 'F12' || keyDownStack.toUpperCase() !== 'F12') {
       return;
     }
-    if (this.attached) {
-      this.detach();
+    if (attached) {
+      detach();
     } else {
-      this.attach();
+      attach();
     }
-  }
+  };
 
-  onKeyUp() {
-    this.keyDownStack = '';
-  }
+  const onKeyUp = () => {
+    keyDownStack = '';
+  };
 
-  enableKeyboardTrigger() {
-    this.keyDownStack = '';
-    document.addEventListener('keydown', this.onKeyDown);
-    document.addEventListener('keyup', this.onKeyUp);
-  }
+  const enableKeyboardTrigger = () => {
+    keyDownStack = '';
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('keyup', onKeyUp);
+  };
 
-  disableKeyboardTrigger() {
-    document.removeEventListener('keydown', this.onKeyDown);
-    document.removeEventListener('keyup', this.onKeyUp);
-  }
-}
+  const disableKeyboardTrigger = () => {
+    document.removeEventListener('keydown', onKeyDown);
+    document.removeEventListener('keyup', onKeyUp);
+  };
 
-export default FTwelve;
+  enable(false);
+  render();
+
+  return {
+    el,
+    render,
+    setContent,
+    enable,
+    disable,
+    attach,
+    detach,
+    onKeyDown,
+    onKeyUp,
+    enableKeyboardTrigger,
+    disableKeyboardTrigger,
+    getKeyDownStack: () => keyDownStack,
+    onAttach: callback => (onAttach = callback),
+    onDetach: callback => (onDetach = callback)
+  };
+};
